@@ -34,18 +34,20 @@ var options = {
 }
 
 let mongoConnectionOnline = { 
-  'url': process.env.MONGODB_URI
+  'url': 'process.env.MONGODB_URI'
 }; 
 
-// let mongoConnectionLocal = { 
-//     'url': `mongodb://localhost:27017/crsx`
-// }; 
+//put in 
+
+let mongoConnectionLocal = { 
+    'url': `mongodb://localhost:27017/crsx`
+}; 
 
 // mongoose.connect(mongoConnectionLocal.url, options, err => { if(err) { console.log(err); }}); 
 mongoose.connect(mongoConnectionOnline.url, options, err => { if(err) { console.log(err); }}); 
 
 
-
+console.log(process.env.MONGODB_URI);
 
 // local mongodb 
 // mongoose.connect("mongodb://localhost:27017/crsexpress",  { useNewUrlParser: true });
