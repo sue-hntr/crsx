@@ -29,26 +29,41 @@ const MongoStore = require('connect-mongo')(session);
 // });
 // mongoose.set('debug', true); // turn on debug
 
+
+
+//******THIS WORKS LOCALLY NO ERRORS. */
+// var options = {
+//   auth: {authdb: 'admin'},
+//   // useMongoClient: true
+// }
+// let mongoConnectionOnline = { 
+//   'url': "mongodb://heroku_g9dgh9j4:heroku_g9dgh9j4@ds151066.mlab.com:51066/heroku_g9dgh9j4"
+// }; 
+// let mongoConnectionLocal = { 
+//     'url': `mongodb://localhost:27017/crsx`
+// }; 
+// mongoose.connect(mongoConnectionLocal.url, options, err => { if(err) { console.log(err); }}); 
+// // mongoose.connect(mongoConnectionOnline.url, options, err => { if(err) { console.log(err); }}); 
+// //****** END 
+
+//******#2 trying to match earlier OR version. Test if goes online*/
 var options = {
   auth: {authdb: 'admin'},
-  useMongoClient: true
+  // useMongoClient: true
 }
-
 let mongoConnectionOnline = { 
   'url': "mongodb://heroku_g9dgh9j4:heroku_g9dgh9j4@ds151066.mlab.com:51066/heroku_g9dgh9j4"
 }; 
-
-//put in 
-
 let mongoConnectionLocal = { 
     'url': `mongodb://localhost:27017/crsx`
 }; 
+mongoose.connect(mongoConnectionLocal.url || mongoConnectionOnline.url , options, err => { if(err) { console.log(err); }}); 
+// mongoose.connect(mongoConnectionOnline.url, options, err => { if(err) { console.log(err); }}); 
+//****** END 
 
-// mongoose.connect(mongoConnectionLocal.url, options, err => { if(err) { console.log(err); }}); 
-mongoose.connect(mongoConnectionOnline.url, options, err => { if(err) { console.log(err); }}); 
 
 
-console.log(process.env.MONGODB_URI);
+
 
 // local mongodb 
 // mongoose.connect("mongodb://localhost:27017/crsexpress",  { useNewUrlParser: true });
@@ -136,6 +151,6 @@ app.use(function(err, req, res, next) {
 });
 
 // listen on port 
-app.listen(3000, function () {
-  console.log('Express app listening on port 3000');
+app.listen(PORT, function () {
+  console.log("Express app listening on port " + PORT + "!");
 });
