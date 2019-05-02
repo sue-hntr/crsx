@@ -1,0 +1,158 @@
+<!-- bootstrap 4.2.1 -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <title>CRS Boostrap</title>
+
+    <!-- REFERENCES TO  BOOTSTRAP 4.2.1 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <!-- GOOGLEFONTS -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700" rel="stylesheet">
+    
+    <!-- LOCAL CSS -->
+    <link type="text/css" rel="stylesheet" href="./stylesheets/bootstrap.css" />
+
+  </head>
+  <body>
+
+<!-- ****** CRS HEADER  ******-->     
+    <div class="pagehctr">
+      <div class="container">
+      <div class="logohead">
+            <div class="row">
+              <div class="col-1 pzero"></div>
+              <div class="col-3">
+                  <a href="/about">
+                    <h1 class="crs_font  dblue">CRS</h1>
+                  </a>
+              </div>
+              <!-- <div class="col-1"></div> -->
+              <div class="col-7 green">
+                    <span>Consumer Registration for Services</span><br>
+                    <span>Free Confidential Help with Housing</span>
+              </div>
+              <div class="col-1"></div>
+            </div>  <!--close row-->
+          </div>  <!--close logohead-->
+        </div>
+    </div>  <!--pagehctr -->      
+<!-- ****** CRS HEADER  ******-->      
+        
+<!-- ****** BUTTON MENU  ******-->
+    <div class="container">
+        <div class="regpagetopbtn">
+            <div class="row">
+                <div class="col-1 pzero"></div>
+<!-- ****** appointments  ******-->                
+                <div class="col-2">
+                  <a href="/appointment">
+                    <img src="images/Appt.png" />
+                  </a>
+                    <br>
+                    <span class="btnlabel">
+                        Appointments
+                      </span>
+                </div>
+                <div class="col-1"></div>
+<!-- ****** bring docs  ******-->                 
+                <div class="col-2">
+                  <a href="/bringforms">
+                    <img src="images/Forms.png" />
+                  </a>
+                    <br>
+                    <span class="btnlabel">
+                        &nbsp;&nbsp;ID/Forms
+                      </span>
+                </div>
+                <div class="col-1"></div>
+<!-- ****** staff options  ******-->                 
+                <div class="col-2">
+                  <a href="/staff">
+                    <img src="images/Counselor.png" />
+                  </a>
+                    <br>
+                    <span class="btnlabel">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Staff
+                    </span>
+                </div>
+                <div class="col-1"></div>
+<!-- ****** login and out buttons  ******-->                 
+                <div class="col-2">
+                  <a href="logout">
+                    <img src="images/HomeConsumers.png" />
+                  </a>
+                  <br>
+                  <span class="btnlabel">
+                      &nbsp;&nbsp;LogOUT
+                  </span>
+                </div>
+              </div> <!-- close row -->
+            </div> <!-- close regpagetopbtn -->
+          </div> <!-- close container -->
+<!-- ****** END BUTTON MENU  ******-->
+            <div class="container">
+                <div class="pagetitlemarg">
+                    <div class="row">
+                        <div class="col-1 pzero"></div>
+                        <div class="col-9 pzero text-left">
+                          <h4 class="dblue">Welcome to 
+                            <br>
+                            Consumer Registration for Services</h4>
+                        </div>
+                        <div class="col-2"></div>
+                    </div> <!-- close row -->
+                    <div class="row">
+                        <div class="col-1 pzero"></div>
+                        <div class="col-9 pzero text-left">
+                          <h6 class="dblue">Already registered? Please 
+                            <a href="/login">log in</a>
+                          </h6>
+                        </div>
+                        <div class="col-2"></div>
+                    </div> <!-- close row -->
+                    <div class="pagetitlemarg">
+                      <div class="row">
+                        <div class="col-1 pzero"></div>
+                        <div class="col-9 pzero text-left">
+                          <form action="/register" method="post">
+                            <div class="form-group">
+                                <label class="label-bf">First name</label>
+                                <input type="text" name="firstname" class="form-control" placeholder="Enter first name">
+                              </div>
+                              <div class="form-group">
+                                  <label class="label-bf" >Last name</label>
+                                  <input type="text" name="lastname" class="form-control" placeholder="Enter last name">
+                                </div>
+                            <div class="form-group">
+                              <label class="label-bf" for="exampleInputEmail1">Email address</label>
+                              <input type="text" name="email" class="form-control" placeholder="Enter email">
+                              <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                            </div>
+                            <div class="form-group">
+                              <label class="label-bf" for="exampleInputPassword1">Password</label>
+                              <input type="password" name="password" type="password" class="form-control" placeholder="Enter password">
+                            </div>
+                            <div class="form-group">
+                                <label class="label-bf" for="exampleInputPassword1">Confirm Password</label>
+                                <input type="password" name="confirmpassword" class="form-control" placeholder="Confirm password">
+                              </div>
+                            <input type="submit" class="btn btn-primary">
+                          </form>
+                          <div class="col-2"></div>
+                        </div> <!-- close row -->
+                      </div><!--close pagetitlemarg-->
+  
+                  </div>  <!--close pagetitlemarg-->
+                  </div> <!-- close container -->
+  </div>
+
+    <!-- REFERENCES TO  BOOTSTRAP 4.2.1 -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+  </body>
+</html>
