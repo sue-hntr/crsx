@@ -2,7 +2,7 @@ require("dotenv").config();
 
 const express = require('express');
 var favicon = require('serve-favicon')
-var exphbs  = require('express-handlebars');
+
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const session = require('express-session');

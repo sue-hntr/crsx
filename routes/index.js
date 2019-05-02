@@ -31,7 +31,7 @@ var mid = require('../middleware');
        req.body.confirmpassword && 
        req.body.firstname && 
        req.body.lastname) {
-        console.log('yes');
+        // console.log('yes');
         // confirm that user typed same password twice
         if (req.body.password !== req.body.confirmpassword) {
           var err = new Error('Passwords do not match.');
