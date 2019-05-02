@@ -34,7 +34,7 @@ var options = {
 }
 
 let mongoConnectionOnline = { 
-  'url': 'process.env.MONGODB_URI'
+  'url': "mongodb://heroku_g9dgh9j4:heroku_g9dgh9j4@ds151066.mlab.com:51066/heroku_g9dgh9j4"
 }; 
 
 //put in 
