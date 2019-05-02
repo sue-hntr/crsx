@@ -21,9 +21,29 @@ const MongoStore = require('connect-mongo')(session);
 
 
 // Heroku Mongo DB connection
-// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/crsexpress", { useNewUrlParser: true })
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/crsexpress";
-mongoose.connect(MONGODB_URI);
+// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/crsx", { useNewUrlParser: true })
+// var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost:27017/crsx";
+// mongoose.connect(MONGODB_URI, {
+//   useMongoClient: true,
+//   auth:{authdb:"admin"}
+// });
+// mongoose.set('debug', true); // turn on debug
+
+var options = {
+  auth: {authdb: 'admin'}
+}
+
+let mongoConnectionOnline = { 
+  'url': `MONGODB_URI`
+}; 
+
+let mongoConnectionLocal = { 
+    'url': `mongodb://localhost:27017/crsx`
+}; 
+
+mongoose.connect(mongoConnectionOnline.url, options, err => { if(err) { console.log(err); }}); 
+
+
 
 
 // local mongodb 
@@ -93,11 +113,11 @@ app.use(function(req, res, next) {
   next(err);
 });
 
-const result = dotenv.config()
-if (result.error) {
-  throw result.error
-}
-console.log(result.parsed)
+// const result = dotenv.config()
+// if (result.error) {
+//   throw result.error
+// }
+// console.log(result.parsed)
 
 
 // error handler
