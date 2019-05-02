@@ -30,7 +30,8 @@ const MongoStore = require('connect-mongo')(session);
 // mongoose.set('debug', true); // turn on debug
 
 var options = {
-  auth: {authdb: 'admin'}
+  auth: {authdb: 'admin'},
+  useMongoClient: true
 }
 
 let mongoConnectionOnline = { 
