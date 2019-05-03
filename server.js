@@ -18,8 +18,6 @@ app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
 ////allows mongostore to access sessions by passing it (sessions)
 const MongoStore = require('connect-mongo')(session);
 
-
-
 // Heroku Mongo DB connection
 // mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/crsx", { useNewUrlParser: true })
 // var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost:27017/crsx";
@@ -28,23 +26,6 @@ const MongoStore = require('connect-mongo')(session);
 //   auth:{authdb:"admin"}
 // });
 // mongoose.set('debug', true); // turn on debug
-
-
-
-//******THIS WORKS LOCALLY NO ERRORS. */
-// var options = {
-//   auth: {authdb: 'admin'},
-//   // useMongoClient: true
-// }
-// let mongoConnectionOnline = { 
-//   'url': "mongodb://heroku_g9dgh9j4:heroku_g9dgh9j4@ds151066.mlab.com:51066/heroku_g9dgh9j4"
-// }; 
-// let mongoConnectionLocal = { 
-//     'url': `mongodb://localhost:27017/crsx`
-// }; 
-// mongoose.connect(mongoConnectionLocal.url, options, err => { if(err) { console.log(err); }}); 
-// // mongoose.connect(mongoConnectionOnline.url, options, err => { if(err) { console.log(err); }}); 
-// //****** END 
 
 //******#2 trying to match earlier OR version. Test if goes online*/
 var options = {
@@ -85,6 +66,15 @@ app.use(session({
   })
 }));
 
+var timeout = require('connect-timeout'); //express v4
+
+app.use(timeout(120000));
+app.use(haltOnTimedout);
+
+function haltOnTimedout(req, res, next){
+  if (!req.timedout) next();
+}
+
 app.use(function (req, res, next){
   res.locals.currentUser = req.session.userId;
   next();
@@ -97,34 +87,11 @@ app.use(logger("dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-
-
-
-
-
 // serve static files from /public
 app.use(express.static('public'));
 
-
-//USE IN PRODUCTION
-// Serve up static assets (usually on heroku)
-// if (process.env.NODE_ENV === "production") {
-//   app.use(express.static("client/build"));
-// }
-
-// include routes. 
-//This changes alot in React because view routes and backend route(db, API)
-// here:  app.use(routes);
-// above: // const routes = require("./routes");
-
-
 const routes = require('./routes');
 app.use(routes);
-
-// require("./routes/index")(app);
-
-
-// require("./routes/htmlRoutes")(app);
 
 
 // catch 404 and forward to error handler
