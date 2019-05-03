@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const session = require('express-session');
 const path = require("path");
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 const app = express();
 
 const axios = require('axios');
@@ -57,8 +57,8 @@ let mongoConnectionOnline = {
 let mongoConnectionLocal = { 
     'url': `mongodb://localhost:27017/crsx`
 }; 
-// mongoose.connect(mongoConnectionLocal.url || mongoConnectionOnline.url, options, err => { if(err) { console.log(err); }}); 
-mongoose.connect(mongoConnectionOnline.url, options, err => { if(err) { console.log(err); }}); 
+mongoose.connect(mongoConnectionLocal.url || mongoConnectionOnline.url, options, err => { if(err) { console.log(err); }}); 
+// mongoose.connect(mongoConnectionOnline.url, options, err => { if(err) { console.log(err); }}); 
 
 
 //****** END 
