@@ -4,15 +4,17 @@ const express = require('express');
 var favicon = require('serve-favicon')
 
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
 const session = require('express-session');
 const path = require("path");
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3000;
 const app = express();
 
 const axios = require('axios');
 var logger = require("morgan");
 // var db = require("/models");
+
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
 
 ////allows mongostore to access sessions by passing it (sessions)
@@ -66,14 +68,15 @@ app.use(session({
   })
 }));
 
-var timeout = require('connect-timeout'); //express v4
 
-app.use(timeout(120000));
-app.use(haltOnTimedout);
 
-function haltOnTimedout(req, res, next){
-  if (!req.timedout) next();
-}
+
+// app.use(timeout(120000));
+// app.use(haltOnTimedout);
+
+// function haltOnTimedout(req, res, next){
+//   if (!req.timedout) next();
+// }
 
 app.use(function (req, res, next){
   res.locals.currentUser = req.session.userId;
@@ -83,9 +86,25 @@ app.use(function (req, res, next){
 // Use morgan logger for logging requests
 app.use(logger("dev"));
 
+
+
+var timeout = require('connect-timeout'); //express v4
+
+app.use(timeout('5s'));
+// app.use(bodyParser())
+
 // parse incoming requests: if problem look at app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use(haltOnTimedout);
+app.use(cookieParser());
+app.use(haltOnTimedout);
+
+function haltOnTimedout (req, res, next) {
+  if (!req.timedout) next()
+  console.log("halt");
+};
 
 // serve static files from /public
 app.use(express.static('public'));
@@ -100,12 +119,6 @@ app.use(function(req, res, next) {
   err.status = 404;
   next(err);
 });
-
-// const result = dotenv.config()
-// if (result.error) {
-//   throw result.error
-// }
-// console.log(result.parsed)
 
 
 // error handler

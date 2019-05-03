@@ -155,28 +155,28 @@ router.get('/appointment', mid.requiresLogin, function(req, res, next) {
 
 
   // // GET /routerointment
-  // router.get('/appointmentresponse', mid.requiresLogin, function(req, res, next) {
-  //   console.log("rsu " + req.session.userId);
-  //   // let a = "{'userID': '";
-  //   // let b = req.session.userId;
-  //   // let c = "'}"
-  //   // let d = (a+ b+ c);
-  //   // Appointments.find( d, 'phone email', function (err, user){
-  //   Appointments.findOne({'userID': req.session.userId}, function(err, result, appointment){
-  //   // , 'phone email', function (err, appointment){
-  //       if (err) {
-  //         return next(error);
-  //       } if (result) {
-  //         console.log("afo: " + result);
-  //         console.log("apt 2: " + result.phone);
-  //       } else {
-  //         console.log("no Good");
-  //         // aphone = appointment.phone;
-  //         // aemail = appointment.email;
-  //         // console.log("appt response" + aphone + " " + aemail);
-  //       }
-  //     });
-  //   });
+  router.get('/appointmentresponse', mid.requiresLogin, function(req, res, next) {
+    console.log("rsu " + req.session.userId);
+    // let a = "{'userID': '";
+    // let b = req.session.userId;
+    // let c = "'}"
+    // let d = (a+ b+ c);
+    // Appointments.find( d, 'phone email', function (err, user){
+    Appointments.findOne({'userID': req.session.userId}, function(err, result, appointment){
+    // , 'phone email', function (err, appointment){
+        if (err) {
+          return next(error);
+        } if (result) {
+          console.log("afo: " + result);
+          console.log("apt 2: " + result.phone);
+        } else {
+          console.log("no Good");
+          // aphone = appointment.phone;
+          // aemail = appointment.email;
+          // console.log("appt response" + aphone + " " + aemail);
+        }
+      });
+    });
     // res.sendFile(path.join(__dirname, "../public/appointmentresponse.html"));
     // console.log("rsu" + req.session.userId);
 
